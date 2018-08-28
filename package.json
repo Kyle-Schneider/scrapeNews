@@ -1,0 +1,29 @@
+{
+  "name": "scrapenews",
+  "version": "1.0.0",
+  "description": "app with cheerios and mongo ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleSchneider4/scrapeNews.git"
+  },
+  "author": "Kyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KyleSchneider4/scrapeNews/issues"
+  },
+  "homepage": "https://github.com/KyleSchneider4/scrapeNews#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.2.10",
+    "morgan": "^1.9.0",
+    "request": "^2.88.0"
+  }
+}
