@@ -2,6 +2,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var axios = require("axios");
+var cheerio = require("cheerio");
+
 
 var PORT = 3000;
 
@@ -20,22 +23,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 
-// require("./controllers/api-Routes")(app);
+require("./controllers/api-Routes")(app);
 require("./controllers/html-Routes")(app);
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/Articles_db");
 
-db.Article.create({ Headline: "Campus Library" })
-  .then(function(testArticle) {
-    // If saved successfully, print the new Library document to the console
-    console.log(testArticle);
-  })
-  .catch(function(err) {
-    // If an error occurs, print it to the console
-    console.log(err.message);
-  });
 
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
-  });
+
+
+app.listen(PORT, function () {
+  console.log("App running on port " + PORT + "!");
+});
