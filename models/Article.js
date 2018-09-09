@@ -17,6 +17,8 @@ var ArticleSchema = new Schema({
     URL: {
         type: String
     },
+
+    
 });
 
 var Article = mongoose.model("Article", ArticleSchema);

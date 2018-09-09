@@ -19,15 +19,18 @@ $("#art").on("click", function(){
             for (var i = 0; i < data.length; i++) {
                 // Display the apropos information on the page
                 $("#data").append("<div class = card>"+"<h2>"+data[i].Headline+"</h2>")
+
+                $("#data").append( "<a href =" + data[i].URL+ " >"+ "Go to the Article" + "</a>");
                 
-                $("#data").append( "<a href =" + data[i].URL+ " >"+ "Go to the Article" + "</a>"+
-                "<a class=btn btn-primary href=note.html role=button>"+"Link"+"</a>"+"</div>")
+                
+                $("#data").append("<a class=btn btn-primary href=note.html role=button>"+"Notes on This Article"+"</a>"+"</div>");
                 
                 $("#data").append("<form>"+"<div class=form-group>"+
                 "<label for=exampleFormControlTextarea1>"+"Example textarea"+"</label>"+
                 "<textarea class=form-control id=exampleFormControlTextarea1 rows=3>"+"</textarea>"+
               "</div>"+
-            "</form>");
+            "</form>"+"<button type=submit class=btn btn-primary mb-2>"+"Submit"+"</button>"
+        );
             } 
         });
         
