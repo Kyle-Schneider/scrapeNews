@@ -27,16 +27,43 @@ $("#art").on("click", function(){
                 
                 $("#data").append("<form>"+"<div class=form-group>"+
                 "<label for=exampleFormControlTextarea1>"+"Example textarea"+"</label>"+
-                "<textarea class=form-control id=exampleFormControlTextarea1 rows=3>"+"</textarea>"+
+                "<textarea id = noteinput  class=form-control id=exampleFormControlTextarea1 rows=3>"+"</textarea>"+
               "</div>"+
-            "</form>"+"<button type=submit class=btn btn-primary mb-2>"+"Submit"+"</button>"
+            "</form>"+"<button id = savenote type=submit class=btn btn-primary mb-2" + " data-id=" + data[i]._id + ">"+"Submit"+"</button>"
         );
             } 
+            
         });
-        
-          // <p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
           
-      
         });
 
  });
+
+ $(document).on("click", "#savenote", function() {
+     alert("note button");
+
+    // Grab the id associated with the article from the submit button
+    var thisId = $(this).attr("data-id");
+  
+    // Run a POST request to change the note, using what's entered in the inputs
+    $.ajax({
+      method: "POST",
+      url: "/articles/" + thisId,
+      data: {
+        // Value taken from note textarea
+        body: $("#noteinput").val()
+      }
+    })
+      // With that done
+      .then(function(data) {
+        // Log the response
+        console.log(data);
+        // Empty the notes section
+        // $("#noteinput").empty();
+      });
+  
+    // Also, remove the values entered in the input and textarea for note entry
+   
+    $("#noteinput").val("");
+  });
+  
