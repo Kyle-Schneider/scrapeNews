@@ -4,7 +4,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
-require ("dotenv").config();
+require("dotenv").config();
 
 var PORT = 3000;
 
@@ -32,7 +32,7 @@ require("./controllers/html-Routes")(app);
 // mongoose.connect("mongodb://localhost/Articles_db");
 
 mongoose.Promise = Promise
-mongoose.connect(MONGODB_URI);
+mongoose.connect("mongodb://thesoupissoup:megwa4@ds151612.mlab.com:51612/heroku_8m1wkx76");
 
 
 app.listen(PORT, function () {
