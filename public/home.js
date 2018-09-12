@@ -46,20 +46,21 @@ $("#art").on("click", function(){
   
     $.ajax({
       method: "POST",
-      url: "/submit",
+      url: "/articles/"+thisId,
       data: {
-        
         body: $("#noteinput").val()
       }
     })
     
       .then(function(data) {
-        
+        $("#noteinput").val(""); 
+        $("#noteinput").empty();
         console.log(data);
-     });
-  
-    $("#noteinput").val("");
-    // Also, remove the values entered in the input and textarea for note entry
+        
+    });
+ 
+   
+
   });
 
   $(document).on("click", "#articlesnotes", function() {
@@ -69,18 +70,16 @@ $("#art").on("click", function(){
   
     $.ajax({
       method: "GET",
-      url: "/notes",
+      url: "/articles/" + thisId
     })
     
       .then(function(data) {
         
         console.log(data);
 
-      $("#notes").append("<div class = card>"+"<h2>"+data+"</h2>");
+      $("#notes").append("<div class = card>"+"<h2>"+this.data.Note.body+"</h2>");
 
      });
-
-    
 
   });
   

@@ -8,6 +8,8 @@ var cheerio = require("cheerio");
 
 var PORT = 3000;
 
+var MONGOBD_URI = process.env.MONGODB_URI
+
 // Require all models
 var db = require("./models");
 
@@ -27,9 +29,10 @@ require("./controllers/api-Routes")(app);
 require("./controllers/html-Routes")(app);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/Articles_db");
+// mongoose.connect("mongodb://localhost/Articles_db");
 
-
+mongoose.Promise = Promise
+mongoose.connect(MONGOBD_URI);
 
 
 app.listen(PORT, function () {
