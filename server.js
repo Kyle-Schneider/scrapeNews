@@ -28,11 +28,11 @@ app.use(express.static("public"));
 require("./controllers/api-Routes")(app);
 require("./controllers/html-Routes")(app);
 
-// Connect to the Mongo DB
+// Connect to the Mongo DBheroku 
 // mongoose.connect("mongodb://localhost/Articles_db");
 
 mongoose.Promise = Promise
-mongoose.connect(MONGOBD_URI);
+mongoose.connect(MONGODB_URI);
 
 
 app.listen(PORT, function () {
