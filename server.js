@@ -8,7 +8,7 @@ var cheerio = require("cheerio");
 
 var PORT = 3000;
 
-var MONGOBD_URI = process.env.MONGODB_URI
+var MONGODB_URI = process.env.MONGODB_URI
 
 // Require all models
 var db = require("./models");
