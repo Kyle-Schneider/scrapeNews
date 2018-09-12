@@ -6,7 +6,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 // require("dotenv").config();
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000 ;
 
 var MONGODB_URI = process.env.MONGODB_URI
 
