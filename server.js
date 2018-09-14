@@ -29,7 +29,7 @@ require("./controllers/api-Routes")(app);
 require("./controllers/html-Routes")(app);
 
 // Connect to the Mongo DBheroku 
-// mongoose.connect("mongodb://localhost/Articles_db");
+mongoose.connect("mongodb://localhost/Articles_db");
 
 mongoose.Promise = Promise
 mongoose.connect("mongodb://thesoupissoup:megwa4@ds151612.mlab.com:51612/heroku_8m1wkx76");

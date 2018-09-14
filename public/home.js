@@ -15,6 +15,7 @@ $("#art").on("click", function(){
 
  $.get("/articles", function(data){
       console.log(data) 
+
       
             for (var i = 0; i < data.length; i++) {
                 // Display the apropos information on the page
@@ -23,11 +24,11 @@ $("#art").on("click", function(){
                 $("#data").append( "<a href =" + data[i].URL+ " >"+ "Go to the Article" + "</a>");
                 
                 
-                $("#data").append("<a id = articlesnotes class=btn btn-primary href=note.html role=button>"+"Notes on This Article"+"</a>"+"</div>");
+                $("#data").append("<a id = articlesnotes class=btn btn-primary href=note.html role=button" + " data-id=" + data[i]._id + ">" +"Notes on This Article"+"</a>"+"</div>");
                 
                 $("#data").append("<form>"+"<div class=form-group>"+
-                "<label for=exampleFormControlTextarea1>"+"Example textarea"+"</label>"+
-                "<textarea id = noteinput  class=form-control id=exampleFormControlTextarea1 rows=3>"+"</textarea>"+
+                "<label for=note>"+"Leave a note!"+"</label>"+
+                "<textarea class=form-control rows=3 id=note" + data[i]._id + ">"+"</textarea>"+
               "</div>"+
             "</form>"+"<button id = savenote type=submit class=btn btn-primary mb-2" + " data-id=" + data[i]._id + ">"+"Submit"+"</button>"
         );
@@ -48,22 +49,22 @@ $("#art").on("click", function(){
       method: "POST",
       url: "/articles/"+thisId,
       data: {
-        body: $("#noteinput").val()
+        body: $("#note" + thisId).val()
       }
     })
     
       .then(function(data) {
-        $("#noteinput").val(""); 
-        $("#noteinput").empty();
+        $(".form-control").val("");
+        // $(".form-control").empty();
         console.log(data);
         
     });
  
-   
+    
 
   });
 
-  $(document).on("click", "#articlesnotes", function() {
+  $(document).on("click", "#articlesnotes", function(data) {
     alert("note page");
 
     var thisId = $(this).attr("data-id");
@@ -77,7 +78,7 @@ $("#art").on("click", function(){
         
         console.log(data);
 
-      $("#notes").append("<div class = card>"+"<h2>"+this.data.Note.body+"</h2>");
+      $("#notes").append("<div class = card>"+"<h2>"+data.notes.body+"</h2>");
 
      });
 
